@@ -1,0 +1,189 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+Bundle 'lokaltog/vim-easymotion'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'valloric/youcompleteme'
+Bundle 'klen/python-mode'
+Bundle 'majutsushi/tagbar'
+Bundle 'sirver/ultisnips'
+Bundle 'tpope/vim-surround'
+Bundle 'terryma/vim-multiple-cursors'
+
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'morhetz/gruvbox'
+
+Bundle 'dyng/ctrlsf.vim'
+Bundle 'ervandew/supertab'
+Bundle 'mhinz/vim-signify'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-fugitive'
+
+
+" Appearances
+" color setting
+set background=dark
+set t_Co=256
+if &term =~ 'xterm-color'
+set t_ut=
+endif
+colorscheme gruvbox
+
+" status line
+set laststatus=2
+set statusline=
+set statusline+=%-3.3n\                      " buffer number
+set statusline+=%f\                          " filename
+set statusline+=%h%m%r%w                     " status flags
+set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type
+set statusline+=%=                           " right align remainder
+set statusline+=0x%-8B                       " character value
+set statusline+=%-14(%l,%c%V%)               " line, character
+set statusline+=%<%P                         " file position
+
+" cross cursor
+set cursorline
+set cursorcolumn
+
+execute pathogen#infect()
+syntax on
+
+" Basic settings
+let mapleader=';'
+set spell spelllang=en_us "spell check
+
+" set mouse=a 
+" set ttymouse=xterm2
+
+set nowrap
+set nofoldenable "dont fold code
+" set foldmethod=syntax
+" set foldignore=
+set number "sets numbers
+set showmatch
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+set autoindent
+set cindent
+set ignorecase
+set vb " turns off visual bell
+set history=50 " keep 50 lines of command line history
+set ruler	" show the cursor position all the time
+set showcmd	" display incomplete commands
+set incsearch " do incremental searching
+set hlsearch
+set hidden
+set backspace=indent,eol,start 
+set wildmenu
+
+" Abbreviations
+autocmd Filetype python ab ipdb import ipdb; ipdb.set_trace()
+autocmd Filetype python ab ifname if __name__ == '__main__':<CR>
+
+" Automatically remove trailing whitespace in python files
+autocmd BufWritePre *.py :%s/\s\+$//e
+
+" Ignore certain filetypes
+set wildignore+=*.so,*.swp,*.zip
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exeTag
+set wildignore+=*.pyc
+
+" Mappings
+nnoremap <space> za
+nnoremap <C-x> :q!<CR>
+" buffer 
+nnoremap <leader>[ :bn<CR>
+nnoremap <leader>] :bp<CR>
+nnoremap <leader>x :bd<CR>
+
+nnoremap <C-k> gt
+nnoremap <C-j> gT
+
+" Plugin Configurations
+
+" tagbar
+nnoremap <leader>tb :TagbarToggle<CR>
+
+" nerdtree
+nnoremap <leader>nt :NERDTreeToggle<CR>
+
+" multicursor
+let g:multi_cursor_use_default_mapping=1
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+" vim-signify
+let g:signify_vsc_list = ['git']
+let g:signify_disable_by_default = 0
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
+nnoremap <C-g> :SignifyToggle<CR>
+
+" CtrlP
+let g:ctrlp_map = '<c-t>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+
+
+" ycm
+nnoremap <leader>gt :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_goto_buffer_command = 'new-tab'
+" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+
+"vim-indent-guides
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
+"CtrlSF
+nnoremap <leader>sf :CtrlSF
+nnoremap <C-f> :CtrlSF<CR>
+
+"ultisnips
+let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
+let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
+
+" super tab
+let g:SuperTabDefaultCompletionType = '<leader><tab>'
+
+"disable auto syntastic
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <leader>se :SyntasticCheck<CR>
+nnoremap <leader>sr :SyntasticReset<CR>
+
+" Easymotion
+map / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+let g:EasyMotion_landing_highlight = 1
+
+"python mode
+let g:pymode = 1
+let g:pymode_indent = 1
+"let g:pymode_folding = 1 
+let g:pymode_trim_whitespaces = 1
+let g:pymode_lint = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_syntax = 1
+let g:pymode_options_max_line_length = 100
+nnoremap <leader>af :PymodeLintAuto<CR>
