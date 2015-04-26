@@ -1,0 +1,72 @@
+set nocompatible              
+filetype off                 
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+Bundle 'morhetz/gruvbox'
+
+""" End of Vundle
+
+""" Color and Display
+
+set background=dark
+set t_Co=256
+set cursorline
+set cursorcolumn
+colorscheme gruvbox
+
+""" Basic Config
+
+" General settings
+syntax on
+let mapleader=';'
+let g:mapleader=';'
+set spell spelllang=en_us
+
+set ruler
+set nowrap
+set nofoldenable
+set number
+set showcmd
+set wildmenu 
+set autoread
+set wildignore+=*.so,*.swp,*.zip,*.pyc
+set backspace=indent,eol,start 
+set hidden
+set lazyredraw
+set showmatch
+set vb 
+set autoindent
+set history=200
+set nostartofline
+set matchpairs+=<:>
+set fo-=t
+set laststatus=2
+
+" Tab settings
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+set smarttab
+
+" Search case insensitive
+set smartcase
+set ignorecase
+set hlsearch
+set incsearch
+
+" Disable backup and swap
+set nobackup
+set nowritebackup
+set noswapfile
+
+
+""" Basic mapping
+" mapping tab switch to keep consistent with tmux 
+nnoremap <C-w>n gt
+nnoremap <C-w>p gT
