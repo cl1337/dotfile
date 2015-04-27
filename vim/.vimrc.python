@@ -1,0 +1,172 @@
+set nocompatible              
+filetype off                 
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+Bundle 'morhetz/gruvbox'
+
+Bundle 'valloric/youcompleteme'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'scrooloose/nerdtree'
+Bundle 'majutsushi/tagbar'
+Bundle 'lokaltog/vim-easymotion'
+Bundle 'scrooloose/syntastic'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'bling/vim-airline'
+Bundle 'ervandew/supertab'
+Bundle 'mhinz/vim-signify'
+Bundle 'sirver/ultisnips'
+Bundle 'Shougo/unite.vim'
+
+" Python plugin
+Bundle 'klen/python-mode'
+Bundle 'nathanaelkane/vim-indent-guides'
+
+" Javascript plugin
+" Bundle 'pangloss/vim-javascript'
+Bundle 'tpope/vim-surround'
+
+""" End of Vundle
+
+""" Color and Display
+
+set background=dark
+set t_Co=256
+set cursorline
+set cursorcolumn
+colorscheme gruvbox
+
+""" Basic Config
+
+" General settings
+syntax on
+let mapleader=';'
+let g:mapleader=';'
+set spell spelllang=en_us
+
+set ruler
+set nowrap
+set nofoldenable
+set number
+set showcmd
+set wildmenu 
+set autoread
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
+set backspace=indent,eol,start 
+set hidden
+set lazyredraw
+set showmatch
+set vb 
+set autoindent
+set history=200
+set nostartofline
+set matchpairs+=<:>
+set fo-=t
+set laststatus=2
+
+" Tab settings
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+set smarttab
+
+" Search case insensitive
+set smartcase
+set ignorecase
+set hlsearch
+set incsearch
+
+" Disable backup and swap
+set nobackup
+set nowritebackup
+set noswapfile
+
+
+""" Basic mapping
+
+" mapping tab switch to keep consistent with tmux 
+nnoremap <C-w>n gt
+nnoremap <C-w>p gT
+
+
+""" Plugin setup
+
+"" YouCompleteMe
+nnoremap <leader>gt :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_goto_buffer_command = 'new-tab'
+let g:ycm_key_list_select_completion = ['\<C-TAB>', '\<Down>']
+let g:ycm_key_list_previous_completion = ['\<C-S-TAB>', '\<Up>']
+
+"" SuperTab
+let g:SuperTabDefaultCompletionType = '\<C-Tab>'
+
+
+"" Python-mode
+let g:pymode_options_max_line_length = 100 " Uber style
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_breakpoint_cmd = 'import ipdb;ipdb.set_trace() # FIXME: breakpoint!'
+let g:pymode_folding = 0 " Dont auto fold code
+let g:pymode_lint_on_write = 0 " Disable check on every write
+let g:pymode_rope = 0 " Disable rope mode
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+nnoremap <leader>af :PymodeLintAuto<CR>
+
+"" CtrlP
+let g:ctrlp_map = '<C-f>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'find %s -type f'
+
+"" Easymotion
+map / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+let g:EasyMotion_landing_highlight = 1
+
+"" Airline
+let g:airline_powerline_fonts = 1
+
+"" Syntastic
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nnoremap <leader>se :SyntasticCheck<CR>
+nnoremap <leader>sr :SyntasticReset<CR>
+
+"" Multicursor
+let g:multi_cursor_use_default_mapping=1
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+"" Signify
+let g:signify_vsc_list = ['git']
+let g:signify_disable_by_default = 0
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
+
+"" Tagbar
+nnoremap <leader>tb :TagbarToggle<CR>
+
+"" Nerdtree
+nnoremap <leader>nt :NERDTreeToggle<CR>
+
+"" Vim-indent-guides
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
+"" Unite
+nnoremap <C-b> :Unite buffer<CR>
