@@ -1,4 +1,5 @@
 {
+	"bootstrapped": true,
 	"in_process_packages":
 	[
 	],
@@ -8,11 +9,13 @@
 		"CursorRuler",
 		"Git",
 		"GitGutter",
+		"Gruvbox Dark",
 		"Package Control",
 		"SideBarEnhancements",
 		"SublimeCodeIntel",
 		"SublimeLinter",
 		"SublimeLinter-flake8",
-		"SublimeLinter-pylint"
+		"SublimeLinter-pylint",
+		"Theme - Soda"
 	]
 }

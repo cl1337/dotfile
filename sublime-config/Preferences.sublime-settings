@@ -1,7 +1,7 @@
 {
 	"auto_complete": false,
 	"caret_style": "solid",
-	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"color_scheme": "Packages/Gruvbox Dark/gruvbox.tmTheme",
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
@@ -13,11 +13,13 @@
 		".git",
 		"env"
 	],
-	"font_size": 14.0,
+	"font_size": 12.0,
 	"highlight_line": true,
 	"hot_exit": true,
 	"ignored_packages":
 	[
+		"SublimeLinter",
+		"SublimeCodeIntel"
 	],
 	"open_files_in_new_window": false,
 	"remember_open_files": true,

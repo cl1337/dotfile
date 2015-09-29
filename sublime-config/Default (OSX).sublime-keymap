@@ -1,17 +1,6 @@
 [
-{ "keys": ["g", "t"], "command": "next_view",
-"context":
-[
-{ "key": "setting.command_mode", "operand": true },
-{ "key": "setting.is_widget", "operand": false }
+    { "keys": ["ctrl+shift+k"], "command": "select_lines", "args": {"forward": false} },
+    { "keys": ["ctrl+shift+j"], "command": "select_lines", "args": {"forward": true} }
 ]
-},
 
-{ "keys": ["g", "T"], "command": "prev_view",
-"context":
-[
-{ "key": "setting.command_mode", "operand": true },
-{ "key": "setting.is_widget", "operand": false }
-]
-},
-]
+
