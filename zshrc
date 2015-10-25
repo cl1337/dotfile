@@ -100,8 +100,9 @@ export PATH
 pg_s() { pg_ctl "$@" -D /usr/local/var/postgres/ ;}
 
 # use vim 7.4
-alias vim="/usr/local/bin/vim"
+# alias vim="/usr/local/bin/vim"
 alias la="ls -Al"
+alias ssh="ssh -A"
 alias pull-master="git fetch; git pull origin master"
 
 # use auth tmux
