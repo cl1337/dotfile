@@ -13,7 +13,7 @@ tmux source ~/.tmux.conf
 if [ "$(echo $0)" = "-zsh" ];then
     zsh ~/.zshrc
 else if [ "$(echo $0)" = "-bash" ];then
-    bash source ~/.bash_profile
+    source ~/.bash_profile
 else
     echo "shell is not bash or zsh, abort ..."
 fi
