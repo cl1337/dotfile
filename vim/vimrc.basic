@@ -32,7 +32,6 @@ set t_Co=256
 if &term =~ 'xterm-color'
 set t_ut=
 endif
-"colorscheme gruvbox
 
 " status line
 set laststatus=2
