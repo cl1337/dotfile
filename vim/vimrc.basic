@@ -3,7 +3,7 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -14,7 +14,6 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-surround'
 Bundle 'terryma/vim-multiple-cursors'
-Bundle 'morhetz/gruvbox'
 Bundle 'dyng/ctrlsf.vim'
 Bundle 'ervandew/supertab'
 Bundle 'mhinz/vim-signify'
@@ -51,7 +50,6 @@ set statusline+=%<%P                         " file position
 set cursorline
 set cursorcolumn
 
-execute pathogen#infect()
 syntax on
 
 " Basic settings
