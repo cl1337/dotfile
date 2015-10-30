@@ -9,19 +9,18 @@ curl -o zshrc https://raw.githubusercontent.com/cl1337/dotfile/master/zshrc
 echo "updating shell and tmux configs"
 
 stamp_line="<<<<<<<<<<<<<<<<<<<<<<<STAMPED>>>>>>>>>>>>>>>>>>>>>>>>>"
-
-if [ grep "$stamp_line" ~/.bash_profile ] ; then
+if grep --quiet "$stamp_line" ~/.bash_profile ; then
+    echo "bash profile has stamped, check if you need to update"
+else
     echo "$stamp_line" >> ~/.bash_profile
     cat bash_profile >> ~/.bash_profile
-else
-    echo "bash profile has stamped, check if you need to update"
 fi
 
-if [ grep "$stamp_line" ~/.zshrc ] ; then
+if grep --quiet "$stamp_line" ~/.zshrc ; then
+    echo "zsh profile has stamped, check if you need to update"
+else
     echo "$stamp_line" >> ~/.zshrc
     cat zshrc >> ~/.zshrc
-else
-    echo "zsh profile has stamped, check if you need to update"
 fi
 
 if [ "$(echo $0)" = "-zsh" ] ; then
