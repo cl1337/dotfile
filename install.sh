@@ -46,6 +46,12 @@ rm -rf bash_profile
 echo "end of install"
 
 
+
+# TODO
+# install vim 74
+
 # function vim74 {
 #     alias vim="/home/uber/bin/vim"
 # }
+
+# install sublime config
