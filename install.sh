@@ -2,9 +2,7 @@
 
 # downloading files
 echo "downloading config files"
-curl -o bash_profile https://raw.githubusercontent.com/cl1337/dotfile/master/bash_profile
 curl -o ~/.tmux.conf https://raw.githubusercontent.com/cl1337/dotfile/master/tmux.conf
-curl -o zshrc https://raw.githubusercontent.com/cl1337/dotfile/master/zshrc
 
 echo "updating shell and tmux configs"
 
@@ -12,6 +10,7 @@ stamp_line="<<<<<<<<<<<<<<<<<<<<<<<STAMPED>>>>>>>>>>>>>>>>>>>>>>>>>"
 if grep --quiet "$stamp_line" ~/.bash_profile ; then
     echo "bash profile has stamped, check if you need to update"
 else
+    curl -o bash_profile https://raw.githubusercontent.com/cl1337/dotfile/master/bash_profile
     echo "$stamp_line" >> ~/.bash_profile
     cat bash_profile >> ~/.bash_profile
 fi
@@ -19,6 +18,7 @@ fi
 if grep --quiet "$stamp_line" ~/.zshrc ; then
     echo "zsh profile has stamped, check if you need to update"
 else
+    curl -o zshrc https://raw.githubusercontent.com/cl1337/dotfile/master/zshrc
     echo "$stamp_line" >> ~/.zshrc
     cat zshrc >> ~/.zshrc
 fi
@@ -40,6 +40,9 @@ if [ ! -d ~/.vim/bundle/Vundle.vim ] ; then
 fi
 vim +PluginInstall +qall
 echo "colorscheme gruvbox" >> ~/.vimrc
+echo "clean ups ... "
+rm -rf zshrc
+rm -rf bash_profile
 echo "end of install"
 
 
