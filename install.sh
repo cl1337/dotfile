@@ -16,12 +16,14 @@ else
     echo "shell is not bash or zsh, abort ..."
 fi
 
+# vim install
 # decide to install vim basic or vim loaded, for now just vim basic
 curl -o ~/.vimrc https://raw.githubusercontent.com/cl1337/dotfile/master/vim/vimrc.basic
 if [ ! -d ~/.vim/bundle/Vundle.vim ] ; then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 vim +PluginInstall +qall
+echo "colorscheme gruvbox" >> ~/.vimrc
 echo "end of install"
 
 
