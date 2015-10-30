@@ -13,11 +13,15 @@ stamp_line="<<<<<<<<<<<<<<<<<<<<<<<STAMPED>>>>>>>>>>>>>>>>>>>>>>>>>"
 if [ grep "$stamp_line" ~/.bash_profile ] ; then
     echo "$stamp_line" >> ~/.bash_profile
     cat bash_profile >> ~/.bash_profile
+else
+    echo "bash profile has stamped, check if you need to update"
 fi
 
 if [ grep "$stamp_line" ~/.zshrc ] ; then
     echo "$stamp_line" >> ~/.zshrc
     cat zshrc >> ~/.zshrc
+else
+    echo "zsh profile has stamped, check if you need to update"
 fi
 
 if [ "$(echo $0)" = "-zsh" ] ; then
