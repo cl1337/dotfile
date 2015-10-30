@@ -6,7 +6,7 @@ curl -o ~/.tmux.conf https://raw.githubusercontent.com/cl1337/dotfile/master/tmu
 
 echo "updating shell and tmux configs"
 
-stamp_line="<<<<<<<<<<<<<<<<<<<<<<<STAMPED>>>>>>>>>>>>>>>>>>>>>>>>>"
+stamp_line="#<<<<<<<<<<<<<<<<<<<<<<<STAMPED>>>>>>>>>>>>>>>>>>>>>>>>>"
 if grep --quiet "$stamp_line" ~/.bash_profile ; then
     echo "bash profile has stamped, check if you need to update"
 else
