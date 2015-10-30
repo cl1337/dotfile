@@ -12,7 +12,6 @@ Bundle 'lokaltog/vim-easymotion'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
-Bundle 'sirver/ultisnips'
 Bundle 'tpope/vim-surround'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'morhetz/gruvbox'
@@ -148,11 +147,6 @@ let g:indent_guides_guide_size=1
 "CtrlSF
 nnoremap <leader>sf :CtrlSF
 nnoremap <C-f> :CtrlSF<CR>
-
-"ultisnips
-let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
-let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 
 " Easymotion
 map / <Plug>(easymotion-sn)

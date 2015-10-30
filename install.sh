@@ -8,11 +8,9 @@ curl -o zshrc https://raw.githubusercontent.com/cl1337/dotfile/master/zshrc
 cat bash_profile >> ~/.bash_profile
 cat zshrc >> ~/.zshrc
 
-tmux source ~/.tmux.conf
-
-if [ "$(echo $0)" = "-zsh" ];then
+if [ "$(echo $0)" = "-zsh" ] ; then
     zsh ~/.zshrc
-else if [ "$(echo $0)" = "-bash" ];then
+elif [ "$(echo $0)" = "-bash" ] ; then
     source ~/.bash_profile
 else
     echo "shell is not bash or zsh, abort ..."
@@ -24,6 +22,7 @@ if [ ! -d ~/.vim/bundle/Vundle.vim ] ; then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 vim +PluginInstall +qall
+echo "end of install"
 
 
 # install vim 74
