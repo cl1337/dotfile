@@ -61,7 +61,7 @@ syntax on
 let mapleader=';'
 set spell spelllang=en_us "spell check
 
-" set mouse=a 
+" set mouse=a
 " set ttymouse=xterm2
 
 set nowrap
@@ -84,7 +84,7 @@ set showcmd	" display incomplete commands
 set incsearch " do incremental searching
 set hlsearch
 set hidden
-set backspace=indent,eol,start 
+set backspace=indent,eol,start
 set wildmenu
 
 " Abbreviations
@@ -102,7 +102,7 @@ set wildignore+=*.pyc
 " Mappings
 nnoremap <space> za
 nnoremap <C-x> :q!<CR>
-" buffer 
+" buffer
 nnoremap <leader>[ :bn<CR>
 nnoremap <leader>] :bp<CR>
 nnoremap <leader>x :bd<CR>
@@ -180,7 +180,7 @@ let g:EasyMotion_landing_highlight = 1
 "python mode
 let g:pymode = 1
 let g:pymode_indent = 1
-"let g:pymode_folding = 1 
+"let g:pymode_folding = 1
 let g:pymode_trim_whitespaces = 1
 let g:pymode_lint = 1
 let g:pymode_lint_checkers = ['pyflakes', 'pep8']

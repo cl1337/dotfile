@@ -1,21 +1,26 @@
+# added by auto deploy script
 force_color_prompt=yes
-
-# use vim 7.4
-alias vim="/home/uber/bin/vim"
 alias ls="ls --color=auto"
+alias la="ls -Al"
 alias pull-master="git fetch; git pull origin master"
-
-# use auth tmux
+alias masterdiff="git diff master --name-only"
 alias tmux="export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock; tmux"
+PS1="\[$BLUE\]\u@\h\[$YELLOW\]\[$YELLOW\]\w\[\033[m\]\[$MAGENTA\]\$(__git_ps1)\[$WHITE\]\$ "
 
-# arc config
+
+# arc config (on dev machine)
 export PATH="$HOME/opt/arcanist/bin:$PATH"
-# export PATH="$PATH:./node_modules/.bin"
 
-# git prompt
-source ~/.git-prompt.sh
-PS1="\[$BLUE\]\u\[$YELLOW\]\[$YELLOW\]\w\[\033[m\]\[$MAGENTA\]\$(__git_ps1)\[$WHITE\]\$ "
+# trifle alias (adhoc04-sjc1)
+alias trifle_cb='schemaless-client --instance trifle --url http://localhost:14741 --datastore client_bills'
+alias trifle_ct='schemaless-client --instance trifle --url http://localhost:14741 --datastore client_transactions_2'
+alias mezzanine_trip='schemaless-client --instance mezzanine --url http://localhost:14561 --datastore trips'
 
-# export UBERAPI_SETTINGS="/home/uber/api/Uber/settings.ini"
-# export CLAY_CONFIG="/home/uber/api/Uber/config/development.yaml" 
-
+# prepare script env on celery06
+function script_prepare {
+    cp -rf /home/uber/api-config/ /home/cli
+    cd /var/cache/udeploy/r/api && VAR=$(ls -dt -- */ | head -n1); echo "${VAR::-1}"
+    cd /var/cache/udeploy/r/api/$VAR/current && source bin/activate
+    export CLAY_CONFIG=/etc/uber/api/sjc1.yaml
+    export UBERAPI_SETTINGS=/etc/uber/api/settings.ini
+}
