@@ -12,9 +12,11 @@ PS1="\[$BLUE\]\u@\h\[$YELLOW\]\[$YELLOW\]\w\[\033[m\]\[$MAGENTA\]\$(__git_ps1)\[
 export PATH="$HOME/opt/arcanist/bin:$PATH"
 
 # trifle alias (adhoc04-sjc1)
-alias trifle_cb='schemaless-client --instance trifle --url http://localhost:14741 --datastore client_bills'
-alias trifle_ct='schemaless-client --instance trifle --url http://localhost:14741 --datastore client_transactions_2'
-alias mezzanine_trip='schemaless-client --instance mezzanine --url http://localhost:14561 --datastore trips'
+alias trifle_cb='schemaless-client -i trifle -u 14741 -d client_bills'
+alias trifle_ct='schemaless-client -i trifle -u 14741 -d client_transactions_2'
+# trifle_tpp cells <payment_profile_uuid>
+alias trifle_tpp='schemaless-client -i trifle -u 14741 -d payment_profiles'
+alias mezzanine_trip='schemaless-client -i mezzanine --u 14561 --d trips'
 
 # prepare script env on celery06
 function script_prepare {
