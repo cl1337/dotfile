@@ -13,6 +13,7 @@ else
     curl -o bash_profile https://raw.githubusercontent.com/cl1337/dotfile/master/bash_profile
     echo "$stamp_line" >> ~/.bash_profile
     cat bash_profile >> ~/.bash_profile
+    source ~/.bash_profile
 fi
 
 if grep --quiet "$stamp_line" ~/.zshrc ; then
@@ -21,6 +22,7 @@ else
     curl -o zshrc https://raw.githubusercontent.com/cl1337/dotfile/master/zshrc
     echo "$stamp_line" >> ~/.zshrc
     cat zshrc >> ~/.zshrc
+    source ~/.zshrc
 fi
 
 if [ "$(echo $0)" = "-zsh" ] ; then
