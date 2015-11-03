@@ -34,8 +34,7 @@ else
 fi
 
 echo "improving vim"
-# vim install
-# decide to install vim basic or vim loaded, for now just vim basic
+# vim instal
 curl -o ~/.vimrc https://raw.githubusercontent.com/cl1337/dotfile/master/vim/vimrc.basic
 if [ ! -d ~/.vim/bundle/Vundle.vim ] ; then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -57,3 +56,5 @@ echo "end of install"
 # }
 
 # install sublime config
+# mac path
+# '/Users/chaoli/Library/Application Support/Sublime Text 3/Packages/User'
