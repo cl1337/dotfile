@@ -1,0 +1,11 @@
+[
+    {
+        "description": "Essentials",
+        "git_repo": "git@github.com:cl1337",
+        "git_dir": "dotfile",
+        "config_files": {
+            "tmux.conf": ".tmux.conf",
+            "vim/vimrc.basic": ".vimrc"
+        }
+    }
+]
