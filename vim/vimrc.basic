@@ -7,7 +7,6 @@ Plugin 'VundleVim/Vundle.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-Bundle 'morhetz/gruvbox'
 Bundle 'lokaltog/vim-easymotion'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'scrooloose/nerdtree'
@@ -21,14 +20,18 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 
+" Themes
+Bundle 'scwood/vim-hybrid'
+Bundle 'nanotech/jellybeans.vim'
 
 """ End of Vundle
 
 
 " Appearances
 " color setting
-set background=dark
 set t_Co=256
+set background=dark
+colorscheme jellybeans
 if &term =~ 'xterm-color'
 set t_ut=
 endif
@@ -65,9 +68,9 @@ set nofoldenable "dont fold code
 set number "sets numbers
 set showmatch
 set expandtab
-set softtabstop=4
-set shiftwidth=4
-set tabstop=4
+" set softtabstop=4
+" set shiftwidth=4
+" set tabstop=4
 set autoindent
 set cindent
 set ignorecase
@@ -151,3 +154,4 @@ omap / <Plug>(easymotion-tn)
 map n <Plug>(easymotion-next)
 map N <Plug>(easymotion-prev)
 let g:EasyMotion_landing_highlight = 1
+
