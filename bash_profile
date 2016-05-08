@@ -1,6 +1,3 @@
-# >>> added by auto deploy script
-# export LC_ALL=en_US.UTF-8
-# export LANG=en_US.UTF-8
 force_color_prompt=yes
 alias ls="ls --color=auto"
 alias la="ls -Al"
