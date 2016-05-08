@@ -7,13 +7,5 @@
             "tmux.conf": ".tmux.conf",
             "vim/vimrc.basic": ".vimrc"
         }
-    },
-    {
-        "description": "Prod utils",
-        "git_repo": "gitolite@code.uber.internal:personal/cli",
-        "git_dir": "dot_files",
-        "config_files": {
-            "bash_profile/bash_profile_adhoc": ".bash_profile"
-        }
     }
 ]
