@@ -33,34 +33,20 @@ class Installer(object):
             self._config_vim()
             self._set_config_file()
 
-            # additional editor options
-            if self.config.get('editors'):
-                if self.config['editors'].get('sublime'):
-                    self._config_sublime()
-                if self.config['editors'].get('install_vim'):
-                    self._install_vim_74()
-
-            # additional tool options
-            if self.config.get('tools'):
-                if self.config['tools'].get('bin'):
-                    self._compile_tools_to_bin()
-                if self.config['tools'].get('extra'):
-                    self._install_extra_tools()
-
     def _install_vim_74(self):
-        print colored('>>>> installing vim 7.4 to usr directory', 'green')
+        # TODO
         pass
 
     def _config_sublime(self):
-        print colored('>>>> copy sublime configs', 'green')
+        # TODO
         pass
 
     def _compile_tools_to_bin(self):
-        print colored('>>>> compiling scripts to bin', 'green')
+        # TODO
         pass
 
     def _install_extra_tools(self):
-        print colored('>>>> installing extra tools', 'green')
+        # TODO
         pass
 
     def _config_vim(self):
