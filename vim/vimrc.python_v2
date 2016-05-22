@@ -1,0 +1,193 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+Bundle 'lokaltog/vim-easymotion'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'majutsushi/tagbar'
+Bundle 'tpope/vim-surround'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'dyng/ctrlsf.vim'
+Bundle 'ervandew/supertab'
+Bundle 'mhinz/vim-signify'
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'valloric/youcompleteme'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
+
+" Python
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'klen/python-mode'
+
+" Themes
+Bundle 'nanotech/jellybeans.vim'
+
+""" End of Vundle
+
+
+" Appearances
+" color setting
+set t_Co=256
+set background=dark
+colorscheme jellybeans
+if &term =~ 'xterm-color'
+set t_ut=
+endif
+
+" status line
+ set laststatus=2
+" set statusline=
+" set statusline+=%-3.3n\                      " buffer number
+" set statusline+=%f\                          " filename
+" set statusline+=%h%m%r%w                     " status flags
+" set statusline+=\[%{strlen(&ft)?&ft:'none'}] " file type
+" set statusline+=%=                           " right align remainder
+" set statusline+=0x%-8B                       " character value
+" set statusline+=%-14(%l,%c%V%)               " line, character
+" set statusline+=%<%P                         " file position
+
+" cross cursor
+set cursorline
+set cursorcolumn
+
+syntax on
+
+" Basic settings
+let mapleader=';'
+set spell spelllang=en_us "spell check
+
+" set mouse=a
+" set ttymouse=xterm2
+
+set nowrap
+set nofoldenable "dont fold code
+set foldmethod=syntax
+set foldignore=
+set number "sets numbers
+set numberwidth=1
+set showmatch
+set showmode
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set tabstop=4
+set autoindent
+set cindent
+set ignorecase
+set vb " turns off visual bell
+set history=50 " keep 50 lines of command line history
+set ruler   " show the cursor position all the time
+set showcmd " display incomplete commands
+set incsearch " do incremental searching
+set hlsearch
+set hidden
+set backspace=indent,eol,start
+set wildmenu
+set gdefault " Add the g flag to search/replace by default
+set smarttab
+set smartcase
+set splitbelow
+set splitright
+
+
+" Abbreviations
+autocmd Filetype python ab ipdb import ipdb; ipdb.set_trace()
+autocmd Filetype python ab ifname if __name__ == '__main__':<CR>
+
+" Automatically remove trailing whitespace in python files
+autocmd BufWritePre *.py :%s/\s\+$//e
+
+" Ignore certain filetypes
+set wildignore+=*.so,*.swp,*.zip
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exeTag
+set wildignore+=*.pyc
+
+" Mappings
+nnoremap <space> za
+nnoremap <C-x> :q!<CR>
+" buffer
+nnoremap <leader>[ :bn<CR>
+nnoremap <leader>] :bp<CR>
+nnoremap <leader>x :bd<CR>
+
+nnoremap <C-k> gt
+nnoremap <C-j> gT
+
+" Plugin Configurations
+
+" tagbar
+nnoremap <leader>tb :TagbarToggle<CR>
+
+" nerdtree
+nnoremap <leader>nt :NERDTreeToggle<CR>
+
+" multicursor
+let g:multi_cursor_use_default_mapping=1
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+" vim-signify
+let g:signify_vsc_list = ['git']
+let g:signify_disable_by_default = 0
+nmap <leader>gj <plug>(signify-next-hunk)
+nmap <leader>gk <plug>(signify-prev-hunk)
+nnoremap <C-g> :SignifyToggle<CR>
+
+" CtrlP
+let g:ctrlp_map = '<c-t>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+
+
+"vim-indent-guides
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
+"CtrlSF
+nnoremap <leader>sf :CtrlSF
+nnoremap <C-f> :CtrlSF<CR>
+
+"Easymotion
+map / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map n <Plug>(easymotion-next)
+map N <Plug>(easymotion-prev)
+let g:EasyMotion_landing_highlight = 1
+
+"Airline
+" let g:airline_section_b = '%{strftime("%c")}'
+" let g:airline_section_y = 'BN: %{bufnr("%")}'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='distinguished'
+
+
+"" Python-mode
+" let g:pymode_lint_on_fly = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_options_max_line_length = 100 " Uber style
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_breakpoint_cmd = 'import ipdb;ipdb.set_trace() # FIXME: breakpoint!'
+let g:pymode_folding = 0 " Dont auto fold code
+" let g:pymode_lint_on_write = 1 " Disable check on every write
+let g:pymode_rope = 0 " Disable rope mode
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+nnoremap <leader>af :PymodeLint<CR>
